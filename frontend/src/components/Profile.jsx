@@ -10,7 +10,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import axios from "axios";
 
-
 const Profile = () => {
 
     const [name, setName] = useState('');
@@ -100,7 +99,7 @@ const Profile = () => {
                                 >
                                     <FormControlLabel value="yes" control={<Radio color= 'secondary' />} label="Yes" />
                                     <FormControlLabel value="no" control={<Radio color= 'secondary' />} label="No"/>
-                                    <FormControlLabel value="other" control={<Radio color= 'secondary' />} label="Perchance"/>
+                                    <FormControlLabel value="perchance" control={<Radio color= 'secondary' />} label="Perchance"/>
                                 </RadioGroup>
                             </FormControl>
                             <button style={{width: '100%', backgroundColor: '#e0d8c3'}} type="submit">Submit</button>
@@ -108,7 +107,6 @@ const Profile = () => {
                     </CardContent>
                 </Card>
             </div>
-
         </Stack>
     )
 }
