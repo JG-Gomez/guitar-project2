@@ -1,0 +1,132 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: midnightblue;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+div.accordion {
+  max-width: 200px;
+  margin-left: 10px;
+}
+
+div.MuiToolbar-root {
+  margin: auto;
+}
+
+div.MuiBox-root {
+  justify-content: left;
+}
+
+div.MuiPaper-root {
+  max-width: 1500px;
+  background-color: #2e2e38;
+  color: #f0e6d2;
+}
+
+span {
+  cursor: pointer;
+}
+
+div.MuiStack-root {
+  display: flex;
+  margin-top: 75px;
+}
+
+div.topCards {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.beginnerOne {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.beginnerTwo {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.beginnerThree {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.beginnerFour {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.beginnerFive {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.metalcoreOne {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.userForm {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.resourcesYt {
+  display: inline-flex;
+  align-items: initial;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+div.btn {
+  cursor: pointer;
+}
+
+div.css-12djl0y-MuiStack-root>:not(style)~:not(style) {
+  margin-top: 100px;
+}

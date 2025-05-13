@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: Guitar-Project2
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5436/Guitar-Project2
+    username: guitaruser
+    password: p@ssw0rd
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: 8080
