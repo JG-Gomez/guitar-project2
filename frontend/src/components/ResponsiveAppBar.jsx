@@ -54,7 +54,7 @@ function ResponsiveAppBar() {
     const handleProfileClick = async () => {
         console.log("icon click works")
         try {
-            navigate('/Profile')
+            navigate('/ProfilePage')
         } catch {
             console.log("profile not working")
         }

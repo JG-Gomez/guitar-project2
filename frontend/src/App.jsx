@@ -6,7 +6,7 @@ import {Routes, Route} from "react-router-dom";
 import Beginner from "./components/Beginner.jsx";
 import Metalcore from "./components/Metalcore.jsx";
 import Resources from "./components/Resources.jsx";
-import Profile from "./components/Profile.jsx";
+import ProfilePage from "./components/ProfilePage.jsx";
 
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
                     <Route path="/Beginner" element={<Beginner/>} />
                     <Route path="/Metalcore" element={<Metalcore/>} />
                     <Route path="/Resources" element={<Resources/>} />
-                    <Route path="/Profile" element={<Profile/>} />
+                    <Route path="/ProfilePage" element={<ProfilePage/>} />
                 </Routes>
             </ThemeProvider>
         </>

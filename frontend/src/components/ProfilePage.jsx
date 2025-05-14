@@ -10,11 +10,12 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import axios from "axios";
 
-const Profile = () => {
+const ProfilePage = () => {
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [option, setOption] = useState('');
+    const [submittedProfile, setSubmittedProfile] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,7 +29,8 @@ const Profile = () => {
         try {
             console.log(profileData);
             const response = await axios.post('http://localhost:8080' + '/api/users', profileData);
-            console.log('Profile created:', response.data);
+            console.log('ProfilePage created:', response.data);
+            setSubmittedProfile(response.data);
             setName('');
             setAge('');
             setOption('');
@@ -68,7 +70,7 @@ const Profile = () => {
                                        name="name"
                                        placeholder="Wizard's name here"
                                        value={name}
-                                       onChange={e => setName(e.target.value)} required />
+                                       onChange={e => setName(e.target.value)} required/>
                             </label>
                             <label style={{paddingBottom: 50}}>
                                 <ThemeProvider theme={fontTheme}>
@@ -97,18 +99,41 @@ const Profile = () => {
                                     value={option}
                                     onChange={(e) => setOption(e.target.value)}
                                 >
-                                    <FormControlLabel value="yes" control={<Radio color= 'secondary' />} label="Yes" />
-                                    <FormControlLabel value="no" control={<Radio color= 'secondary' />} label="No"/>
-                                    <FormControlLabel value="perchance" control={<Radio color= 'secondary' />} label="Perchance"/>
+                                    <FormControlLabel value="yes" control={<Radio color='secondary'/>} label="Yes"/>
+                                    <FormControlLabel value="no" control={<Radio color='secondary'/>} label="No"/>
+                                    <FormControlLabel value="perchance" control={<Radio color='secondary'/>}
+                                                      label="Perchance"/>
                                 </RadioGroup>
                             </FormControl>
-                            <button style={{width: '100%', backgroundColor: '#e0d8c3'}} type="submit">Submit</button>
+                            <button style={{width: '100%', backgroundColor: '#e0d8c3'}} type="submit">Submit
+                            </button>
                         </form>
                     </CardContent>
                 </Card>
+
+                {submittedProfile && (
+                    <Card elevation={10} sx={{width: 850, height: 'responsive', backgroundColor: '#f5f5f5'}}>
+                        <ThemeProvider theme={fontTheme}>
+                            <CardContent>
+                                <Typography variant="h3" sx={{paddingBottom: 5}}>
+                                    Your Wizard Stats:
+                                </Typography>
+                                <Typography variant="h5" sx={{paddingBottom: 5}}>
+                                   Name: {submittedProfile.name}
+                                </Typography>
+                                <Typography variant="h5" sx={{paddingBottom: 5}}>
+                                    Age: {submittedProfile.age}
+                                </Typography>
+                                <Typography variant="h5" sx={{paddingBottom:5}}>
+                                    First Time Learning?: {submittedProfile.option}
+                                </Typography>
+                            </CardContent>
+                        </ThemeProvider>
+                    </Card>
+                )}
             </div>
         </Stack>
-    )
-}
+    );
+};
 
-export default Profile;
+export default ProfilePage;
