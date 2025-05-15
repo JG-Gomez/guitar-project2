@@ -18,6 +18,12 @@ const ProfilePage = () => {
     const [interest, setInterest] = useState('');
     const [submittedProfile, setSubmittedProfile] = useState(null);
 
+    React.useEffect(() => {
+        const storedProfile = localStorage.getItem('submittedProfile');
+        if (storedProfile) {
+            setSubmittedProfile(JSON.parse(storedProfile));
+        }
+    }, []);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -34,10 +40,12 @@ const ProfilePage = () => {
             console.log(profileData);
             const response = await axios.post('http://localhost:8080' + '/api/users', profileData);
             console.log('ProfilePage created:', response.data);
+            localStorage.setItem('submittedProfile', JSON.stringify(response.data));
             setSubmittedProfile(response.data);
             setName('');
             setAge('');
             setOption('');
+            setInterest('');
         } catch (error) {
             console.error('Error creating profile:', error);
         }
@@ -138,11 +146,11 @@ const ProfilePage = () => {
                 </Card>
 
                 {submittedProfile && (
-                    <Card elevation={10} sx={{width: 850, height: 'responsive', backgroundColor: '#f5f5f5'}}>
+                    <Card elevation={10} sx={{width: 550, height: 'responsive', backgroundColor: '#f5f5f5'}}>
                         <ThemeProvider theme={fontTheme}>
                             <CardContent>
                                 <Typography variant="h3" sx={{paddingBottom: 5}}>
-                                    Your Wizard Stats:
+                                    Le Young Wizard Stats:
                                 </Typography>
                                 <Typography variant="h5" sx={{paddingBottom: 5}}>
                                     Name: {submittedProfile.name}
@@ -151,8 +159,36 @@ const ProfilePage = () => {
                                     Age: {submittedProfile.age}
                                 </Typography>
                                 <Typography variant="h5" sx={{paddingBottom: 5}}>
-                                    First Time Learning?: {submittedProfile.option}
+                                    Noob: {submittedProfile.option}
                                 </Typography>
+
+                                <button
+                                    onClick={() => {
+                                        console.log('Editing profile:', submittedProfile);
+                                        setName(submittedProfile.name);
+                                        setAge(submittedProfile.age.toString());
+                                        setOption(submittedProfile.option);
+                                        setInterest(submittedProfile.interestsEntity?.interestType.toLowerCase() || '');
+                                        localStorage.removeItem('submittedProfile');
+                                        setSubmittedProfile(null);
+                                    }}
+                                    style={{backgroundColor: '#e0d8c3'}}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    onClick={async () => {
+                                        console.log("Profile deleted")
+
+                                        await axios.delete(`http://localhost:8080/api/users/${submittedProfile.id}`);
+                                        localStorage.removeItem('submittedProfile');
+                                        setSubmittedProfile(null);
+                                    }}
+                                    style={{marginLeft: '1rem', backgroundColor: '#e0d8c3'}}
+                                >
+                                    Delete
+                                </button>
+
                             </CardContent>
                         </ThemeProvider>
                     </Card>

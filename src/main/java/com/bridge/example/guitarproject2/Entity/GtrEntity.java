@@ -31,11 +31,11 @@ public class GtrEntity {
         this.interestsEntity = interestsEntity;
     }
 
-    public InterestsEntity getInterestType() {
+    public InterestsEntity getInterestEntity() {
         return interestsEntity;
     }
 
-    public void setInterestType(InterestsEntity interestsEntity) {
+    public void setInterestEntity(InterestsEntity interestsEntity) {
         this.interestsEntity = interestsEntity;
     }
 
