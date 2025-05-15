@@ -15,6 +15,7 @@ const ProfilePage = () => {
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [option, setOption] = useState('');
+    const [interest, setInterest] = useState('');
     const [submittedProfile, setSubmittedProfile] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -104,6 +105,28 @@ const ProfilePage = () => {
                                     <FormControlLabel value="perchance" control={<Radio color='secondary'/>}
                                                       label="Perchance"/>
                                 </RadioGroup>
+
+                                <ThemeProvider theme={fontTheme}>
+                                    <FormLabel id="demo-row-radio-buttons-group-label" sx={{paddingTop: 5}}>
+                                        <Typography variant="h5">
+                                            Most Interested In...
+                                        </Typography>
+                                    </FormLabel>
+                                </ThemeProvider>
+                                <RadioGroup
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                    value={interest}
+                                    onChange={(e) => setInterest(e.target.value)}
+                                >
+                                    <FormControlLabel value="acoustic" control={<Radio color='secondary'/>}
+                                                      label="Acoustic"/>
+                                    <FormControlLabel value="electric" control={<Radio color='secondary'/>}
+                                                      label="Electric"/>
+                                    <FormControlLabel value="both" control={<Radio color='secondary'/>}
+                                                      label="Both"/>
+                                </RadioGroup>
                             </FormControl>
                             <button style={{width: '100%', backgroundColor: '#e0d8c3'}} type="submit">Submit
                             </button>
@@ -119,18 +142,19 @@ const ProfilePage = () => {
                                     Your Wizard Stats:
                                 </Typography>
                                 <Typography variant="h5" sx={{paddingBottom: 5}}>
-                                   Name: {submittedProfile.name}
+                                    Name: {submittedProfile.name}
                                 </Typography>
                                 <Typography variant="h5" sx={{paddingBottom: 5}}>
                                     Age: {submittedProfile.age}
                                 </Typography>
-                                <Typography variant="h5" sx={{paddingBottom:5}}>
+                                <Typography variant="h5" sx={{paddingBottom: 5}}>
                                     First Time Learning?: {submittedProfile.option}
                                 </Typography>
                             </CardContent>
                         </ThemeProvider>
                     </Card>
                 )}
+
             </div>
         </Stack>
     );
