@@ -24,7 +24,10 @@ const ProfilePage = () => {
         const profileData = {
             name: name,
             age: parseInt(age),
-            option: option
+            option: option,
+            interestsEntity: {
+                interestType: interest.charAt(0).toUpperCase() + interest.slice(1)
+            }
         };
 
         try {
